@@ -3,7 +3,7 @@
         <!-- ============================================================== -->
         <!-- Logo -->
         <!-- ============================================================== -->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{{route('dashboard')}}">
             <!-- Logo icon -->
             <b class="logo-icon">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -54,7 +54,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('theme1/assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
                 <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                    <a class="dropdown-item" href="{{route('user.profile')}}"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
                     <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
                 </div>
