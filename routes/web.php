@@ -14,6 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('login', 'loginController@loginForm')->name('user.login.form');
+Route::post('login', 'loginController@login')->name('user.login');
+Route::middleware('auth')->group(function(){
 
-Route::get('dashboard', 'dashboardController@index')->name('dashboard');
-Route::get('profile', 'userController@profile')->name('user.profile');
+    Route::get('dashboard', 'dashboardController@index')->name('dashboard');
+    Route::get('profile', 'userController@profile')->name('user.profile');
+});
+
+
+Route::get('emergency-logout', function(){
+    auth()->logout();
+    return redirect()->route('user.login.form');
+});
