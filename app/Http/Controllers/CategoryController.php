@@ -14,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data['title']='Category List';
+        $data['categories']=Category::orderBy('id','desc')->get();
+        $data['serial']=1;
+        return view('admin.category.index',$data);
     }
 
     /**
@@ -43,7 +46,7 @@ class CategoryController extends Controller
         $data['details']=$request->details;
         Category::create($data);
         session()->flash('message','Category created successfully');
-        return redirect()->route('category.create');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -63,9 +66,11 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $data['title']='Edit Category';
+        $data['category']=Category::findOrFail($id);
+        return view('admin.category.edit',$data);
     }
 
     /**
@@ -75,9 +80,16 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+        ]);
+        $data['name']=$request->name;
+        $data['details']=$request->details;
+        Category::findOrFail($id)->update($data);
+        session()->flash('message','Category updated successfully');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -86,8 +98,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        Category::findOrFail($id)->delete($id);
+        session()->flash('message','Category Deleted successfully');
+        return redirect()->route('category.index');
     }
 }
