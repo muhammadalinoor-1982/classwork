@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function(){
 
     Route::get('dashboard', 'dashboardController@index')->name('dashboard');
     Route::get('profile', 'userController@profile')->name('user.profile');
+    Route::resource('category','CategoryController');
 });
 
 
