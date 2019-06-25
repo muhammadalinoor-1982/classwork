@@ -5,6 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">{{$title}}</h4>
+                    <a href="{{route('category.create')}}" class="btn btn-primary">Add New</a>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
