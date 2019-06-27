@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function(){
     Route::get('profile', 'userController@profile')->name('user.profile');
     Route::resource('category','CategoryController');
     Route::resource('author','AuthorController');
+    Route::resource('post','PostController');
 });
 
 
