@@ -12,6 +12,7 @@ class Post extends Model
         'author_id',
         'details',
         'status',
+        'file',
     ];
 
     public function category()

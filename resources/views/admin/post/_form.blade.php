@@ -45,7 +45,7 @@
 <div class=" text-danger">{{ $message }}</div>
 @enderror
 <div class="form-group">
-    <label class="col-md-12">Post Name</label>
+    <label class="col-md-12">title</label>
     <div class="col-md-12">
         <input name="title" value="{{old('title',isset($post)?$post->title:null)}}" type="text" placeholder="Enter Post Title" class="form-control form-control-line @error('title') is-invalid @enderror">
     </div>
@@ -63,7 +63,18 @@
 @error('details')
 <div class=" text-danger">{{ $message }}</div>
 @enderror
-
+<div class="form-group">
+    <label class="col-md-12">Image</label>
+    <div class="col-md-12">
+        @if(isset($post) && $post->file !=null)
+            <img src="{{asset($post->file)}}" alt="">
+        @endif
+        <input name="file" type="file" placeholder="Upload Image" class="form-control form-control-line @error('file') is-invalid @enderror">
+    </div>
+</div>
+@error('file')
+<div class=" text-danger">{{ $message }}</div>
+@enderror
 <div class="form-group">
     <label class="col-md-12">Status</label>
     @php

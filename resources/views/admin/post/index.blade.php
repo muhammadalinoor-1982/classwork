@@ -27,7 +27,9 @@
                                     <td>{{$post->category->name}}</td>
                                     <td>{{$post->author->name}}</td>
                                     <td>{{ucfirst($post->status)}}</td>
-                                    <td>{{$post->file}}</td>
+                                    <td>
+                                        <img src="{{asset($post->file)}}" alt="">
+                                    </td>
                                     <td>
                                         <a href="{{route('post.edit',$post->id)}}" class="btn btn-cyan float-left">Edit</a>
                                         <form method="post" action="{{route('post.destroy',$post->id)}}">
