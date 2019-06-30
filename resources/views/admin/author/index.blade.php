@@ -17,6 +17,7 @@
                                 <th scope="col">Address</th>
                                 <th scope="col">DOB</th>
                                 <th scope="col">Gender</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Actions</th>
                             </tr>
                             </thead>
@@ -30,6 +31,9 @@
                                     <td>{{$author->address}}</td>
                                     <td>{{$author->DOB}}</td>
                                     <td>{{ucfirst($author->gender)}}</td>
+                                    <td>
+                                        <img src="{{asset($author->image)}}" alt="">
+                                    </td>
                                     <td>
                                         <a href="{{route('author.edit',$author->id)}}" class="btn btn-cyan float-left">Edit</a>
                                         <form method="post" action="{{route('author.destroy',$author->id)}}">

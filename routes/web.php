@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+
 Route::get('login', 'loginController@loginForm')->name('user.login.form');
 Route::post('login', 'loginController@login')->name('user.login');
 Route::middleware('auth')->group(function(){

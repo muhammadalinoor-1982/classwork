@@ -65,3 +65,16 @@
 @error('phone')
 <div class=" text-danger">{{ $message }}</div>
 @enderror
+
+<div class="form-group">
+    <label class="col-md-12">Image</label>
+    <div class="col-md-12">
+        @if(isset($author) && $author->image !=null)
+            <img src="{{asset($author->image)}}" alt="">
+        @endif
+        <input name="image" type="file" placeholder="Upload Image" class="form-control form-control-line @error('image') is-invalid @enderror">
+    </div>
+</div>
+@error('image')
+<div class=" text-danger">{{ $message }}</div>
+@enderror

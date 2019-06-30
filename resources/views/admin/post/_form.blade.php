@@ -75,6 +75,38 @@
 @error('file')
 <div class=" text-danger">{{ $message }}</div>
 @enderror
+
+<div class="form-group">
+    <label class="col-md-12">Is Featured</label>
+    @php
+        if(old("is_featured")){
+            $is_featured = old('is_featured');
+        }elseif (isset($post)){
+            $is_featured = $post->is_featured;
+        }else{
+            $is_featured = null;
+        }
+    @endphp
+    <div class="col-md-12">
+        <input name="is_featured" @if($is_featured==0) checked @endif value="0" type="radio" id="no" class="@error('is_featured') is-invalid @enderror"><label for="no">No</label>
+        <input name="is_featured" @if($is_featured==1) checked @endif value="1" type="radio" id="yes" class="@error('is_featured') is-invalid @enderror"><label for="yes">Yes</label>
+
+    </div>
+</div>
+@error('is_featured')
+<div class=" text-danger">{{ $message }}</div>
+@enderror
+
+<div class="form-group">
+    <label class="col-md-12">Published Date</label>
+    <div class="col-md-12">
+        <input name="published_at" value="{{old('published_at',isset($post)?$post->published_at:null)}}" type="datetime-local" placeholder="Select date and time" class="form-control form-control-line @error('published_at') is-invalid @enderror">
+    </div>
+</div>
+@error('published_at')
+<div class=" text-danger">{{ $message }}</div>
+@enderror
+
 <div class="form-group">
     <label class="col-md-12">Status</label>
     @php
