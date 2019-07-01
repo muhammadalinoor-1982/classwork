@@ -15,7 +15,7 @@
                 <ul class="nav nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li class="menu-item-has-children"><a href="#">Blog</a>
+                    <li class="menu-item-has-children"><a href="#">Blog</a></li>
                         <ul class="sub-menu">
                             <li class="menu-item-has-children"><a href="#">Blog List</a>
                                 <ul class="sub-menu">

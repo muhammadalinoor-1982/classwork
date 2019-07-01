@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('hone');
+Route::get('blog-details/{id}', 'HomeController@blog_details')->name('blog.details');
 
 Route::get('login', 'loginController@loginForm')->name('user.login.form');
 Route::post('login', 'loginController@login')->name('user.login');

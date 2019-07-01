@@ -46,6 +46,16 @@
 </div>
 
 <div class="form-group">
+    <label class="col-md-12">Details</label>
+    <div class="col-md-12">
+        <textarea rows="5" name="details" class="form-control form-control-line @error('details') is-invalid @enderror">{{old('details',isset($author)?$author->details:null)}}</textarea>
+    </div>
+</div>
+@error('details')
+<div class=" text-danger">{{ $message }}</div>
+@enderror
+
+<div class="form-group">
     <label class="col-md-12">Author Gender</label>
     @php
     if(old("gender")){
