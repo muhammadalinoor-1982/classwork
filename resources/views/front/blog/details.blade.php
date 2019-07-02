@@ -88,20 +88,7 @@
 
                     <!-- Widget Content -->
                     <div class="widget-content">
-                        @foreach($featured_posts as $post)
-                        <!-- Single Post -->
-                        <div class="featured-post">
-                            <!-- Post Thumbnail -->
-                            <a href="{{route('blog.details',$post->id)}}">
-                                <img src="{{asset($post->file)}}" alt="" class="img-fluid">
-                            </a>
-                            <!-- Post Title -->
-                            <div class="featured-post-title">
-                                <h6> <a href="{{route('blog.details',$post->id)}}">{{$post->title}}</a> </h6>
-                            </div>
-                        </div>
-                        <!-- End of Single Post -->
-                            @endforeach
+                            @include('front.blog._right_featured')
                     </div>
                     <!-- End of Widget Content -->
                 </div>
@@ -117,21 +104,9 @@
 
                     <!-- Widget Content -->
                     <div class="widget-content">
-                        @foreach($recent_posts as $post)
-                            <!-- Single Post -->
-                                <div class="wrp-cover">
-                                    <!-- Post Thumbnail -->
-                                    <div class="post-thumb">
-                                        <a href="{{route('blog.details', $post->id)}}">
-                                            <img src="{{asset($post->file)}}" alt="" class="img-fluid">
-                                        </a>
-                                    </div>
-                                    <!-- Post Title -->
-                                    <div class="post-title">
-                                        <a href="{{route('blog.details', $post->id)}}">{{$post->title}}</a>
-                                    </div>
-                                </div>
-                        @endforeach
+
+                            @include('front.blog._right_recent')
+
                     </div>
                     <!-- End of Widget Content -->
                 </div>

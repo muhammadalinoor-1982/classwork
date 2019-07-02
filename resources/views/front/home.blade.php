@@ -32,7 +32,7 @@
                                     <a href="{{route('blog.details',$featured_posts[0]->id)}}">{{$featured_posts[0]->author->name}}</a>
                                 </li>
                                 <li class="meta-date"><a href="{{route('blog.details',$featured_posts[0]->id)}}">{{date('D M Y', strtotime($featured_posts[0]->published_at))}}</a></li>
-                                <li class="meta-comments"><a href="#"><i class="fa fa-comment"></i> 2</a></li>
+                                <li class="meta-comments"><a href="#"><i class="fa fa-eye"></i> {{$featured_posts[0]->total_view}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                     <a href="{{route('blog.details', $post->id)}}">{{$post->author->name}}</a>
                                 </li>
                                 <li class="meta-date"><a href="{{route('blog.details', $post->id)}}">{{date('D M Y', strtotime($post->published_at))}}</a></li>
-                                <li class="meta-comments"><a href="#"><i class="fa fa-comment"></i> 2</a></li>
+                                <li class="meta-comments"><a href="#"><i class="fa fa-eye"></i> {{$post->total_view}}</a></li>
                             </ul>
                             <!-- Post Desc -->
                             <div class="desc">
@@ -109,7 +109,7 @@
                                         <a href="#">{{$post->author->name}}</a>
                                     </li>
                                     <li class="meta-date"><a href="#">{{date('D M Y', strtotime($post->published_at))}}</a></li>
-                                    <li class="meta-comments"><a href="#"><i class="fa fa-comment"></i> 2</a></li>
+                                    <li class="meta-comments"><a href="#"><i class="fa fa-eye"></i>{{$post->total_view}}</a></li>
                                 </ul>
                                 <!-- Post Desc -->
                                 <div class="desc">
@@ -140,218 +140,50 @@
                         <!-- Post -->
                         <div class="post-default post-has-front-title">
                             <div class="post-thumb">
-                                <a href="blog-details.html"> <img src="{{asset('theme-front/images/blog/4.jpg')}}"> alt="" class="img-fluid"> </a>
+                                <a href="{{route('blog.details', $most_viewed_posts[0]->id)}}"> <img src="{{asset($most_viewed_posts[0]->file)}}" alt="" class="img-fluid"> </a>
                             </div>
                             <div class="post-data">
                                 <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Adventure</a></div>
+                                <div class="cats"><a href="category-result.html">{{$most_viewed_posts[0]->category->name}}</a></div>
                                 <!-- Title -->
                                 <div class="title">
-                                    <h2><a href="blog-details.html">Top Things To Look For When There choosing A Safari Lodge</a></h2>
+                                    <h2><a href="{{route('blog.details', $most_viewed_posts[0]->id)}}">{{$most_viewed_posts[0]->title}}</a></h2>
                                 </div>
                             </div>
                         </div>
                         <!-- End of Post -->
                     </div>
-
+                    @foreach($most_viewed_posts as $index=>$post)
+                        @if($index != 0)
                     <div class="col-sm-6">
                         <!-- Post -->
                         <div class="post-default">
                             <div class="post-thumb">
-                                <a href="blog-details.html"> <img src="{{asset('theme-front/images/blog/small/1.jpg')}}"> alt="" class="img-fluid"> </a>
+                                <a href="{{route('blog.details', $post->id)}}"> <img src="{{asset($post->file)}}" alt="" class="img-fluid"> </a>
                             </div>
                             <div class="post-data">
                                 <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Love</a></div>
+                                <div class="cats"><a href="category-result.html">{{$post->category->name}}</a></div>
                                 <!-- Title -->
                                 <div class="title">
-                                    <h2><a href="blog-details.html">Blaak Attack Earns Boels First 2019 Victory </a></h2>
+                                    <h2><a href="{{route('blog.details', $post->id)}}">{{$post->title}}</a></h2>
                                 </div>
                                 <!-- Post Desc -->
                                 <div class="desc">
                                     <p>
-                                        Duis mauris augue, efficitur eu arcu sit amet, posuere dignissim neque. Aenean enim sem, pharetra et magna....
+                                        {{str_limit($post->details, 100)}}
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <!-- End of Post -->
                     </div>
-
-                    <div class="col-sm-6">
-                        <!-- Post -->
-                        <div class="post-default">
-                            <div class="post-thumb">
-                                <a href="blog-details.html"><img src="{{asset('theme-front/images/blog/small/2.jpg')}}"> alt="" class="img-fluid"></a>
-                            </div>
-                            <div class="post-data">
-                                <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Lifestyle</a></div>
-                                <!-- Title -->
-                                <div class="title">
-                                    <h2><a href="blog-details.html">Great Britain's Winter Olympics athletes Rated & Slated </a></h2>
-                                </div>
-                                <!-- Post Desc -->
-                                <div class="desc">
-                                    <p>
-                                        Duis mauris augue, efficitur eu arcu sit amet, posuere dignissim neque. Aenean enim sem, pharetra et magna....
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Post -->
-                    </div>
-
-                    <div class="col-sm-6">
-                        <!-- Post -->
-                        <div class="post-default">
-                            <div class="post-thumb">
-                                <a href="blog-details.html"> <img src="{{asset('theme-front/images/blog/small/3.jpg')}}"> alt="" class="img-fluid"> </a>
-                            </div>
-                            <div class="post-data">
-                                <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Technology</a></div>
-                                <!-- Title -->
-                                <div class="title">
-                                    <h2><a href="blog-details.html">12-inch MacBook Refurb $830, Apple Watch Series</a></h2>
-                                </div>
-                                <!-- Post Desc -->
-                                <div class="desc">
-                                    <p>
-                                        Duis mauris augue, efficitur eu arcu sit amet, posuere dignissim neque. Aenean enim sem, pharetra et magna....
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Post -->
-                    </div>
-
-                    <div class="col-sm-6">
-                        <!-- Post -->
-                        <div class="post-default">
-                            <div class="post-thumb">
-                                <a href="blog-details.html"> <img src="{{asset('theme-front/images/blog/small/4.jpg')}}"> alt="" class="img-fluid"> </a>
-                            </div>
-                            <div class="post-data">
-                                <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Food</a></div>
-                                <!-- Title -->
-                                <div class="title">
-                                    <h2><a href="blog-details.html">This Apple Crisp Makes The Entire House Smell Dreamy</a></h2>
-                                </div>
-                                <!-- Post Desc -->
-                                <div class="desc">
-                                    <p>
-                                        Duis mauris augue, efficitur eu arcu sit amet, posuere dignissim neque. Aenean enim sem, pharetra et magna....
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Post -->
-                    </div>
+                        @endif
+                        @endforeach
                 </div>
             </div>
         </section>
         <!-- End of Most Viewed Post -->
-
-        <!-- 728 ad -->
-        <div class="pt-40 pb-40 biz-ad">
-            <a href="#"><img src="{{asset('theme-front/images/ad-728.png')}}"> alt="" class="img-fluid"></a>
-        </div>
-        <!-- End of 728 ad -->
-
-        <!-- Video Post -->
-        <section class="pt-40 pb-10 video-post">
-            <!-- Section title -->
-            <div class="section-title">
-                <h2>Video Post</h2>
-            </div>
-            <!-- End of Section title -->
-            <div class="post-blog-list">
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Post -->
-                        <div class="post-default post-has-video">
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <div data-bg-img="assets/images/blog/6.jpg')}}"></div>
-                                </a>
-                            </div>
-                            <div class="post-data">
-                                <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Food</a></div>
-                                <!-- Title -->
-                                <div class="title">
-                                    <h2><a href="blog-details.html">Five Important Facts Should Know About Recipe</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Post -->
-                    </div>
-
-                    <div class="col-md-6">
-                        <!-- Post -->
-                        <div class="post-default post-has-video">
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <div data-bg-img="assets/images/blog/8.jpg')}}"></div>
-                                </a>
-                            </div>
-                            <div class="post-data">
-                                <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Technology</a></div>
-                                <!-- Title -->
-                                <div class="title">
-                                    <h2><a href="blog-details.html">Apple Admits To Macbook and Macbook Pro </a></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Post -->
-                    </div>
-
-                    <div class="col-md-6">
-                        <!-- Post -->
-                        <div class="post-default post-has-video">
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <div data-bg-img="assets/images/blog/10.jpg')}}"></div>
-                                </a>
-                            </div>
-                            <div class="post-data">
-                                <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Food</a></div>
-                                <!-- Title -->
-                                <div class="title">
-                                    <h2><a href="blog-details.html">20-Minute Thai Coconut Chicken Soup</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Post -->
-                    </div>
-
-                    <div class="col-md-6">
-                        <!-- Post -->
-                        <div class="post-default post-has-video">
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <div data-bg-img="assets/images/blog/9.jpg')}}"></div>
-                                </a>
-                            </div>
-                            <div class="post-data">
-                                <!-- Category -->
-                                <div class="cats"><a href="category-result.html">Technology</a></div>
-                                <!-- Title -->
-                                <div class="title">
-                                    <h2><a href="blog-details.html">Feel The Love, And Things On My Mind</a></h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Post -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End of Video Post -->
     </div>
     <div class="col-lg-4">
         <div class="pt-88">
@@ -394,137 +226,11 @@
 
                     <!-- Widget Content -->
                     <div class="widget-content">
-                        <!-- Single Post -->
-                        <div class="featured-post">
-                            <!-- Post Thumbnail -->
-                            <a href="blog-details.html">
-                                <img src="{{asset('theme-front/images/sidebar/fp-1.jpg')}}"> alt="" class="img-fluid">
-                            </a>
-                            <!-- Post Title -->
-                            <div class="featured-post-title">
-                                <h6> <a href="blog-details.html">Guide To Experiencing The Magical Sabino Canyon In Tucson</a> </h6>
-                            </div>
-                        </div>
-                        <!-- End of Single Post -->
-
-                        <!-- Single Post -->
-                        <div class="featured-post">
-                            <!-- Post Thumbnail -->
-                            <a href="blog-details.html">
-                                <img src="{{asset('theme-front/images/sidebar/fp-2.jpg')}}"> alt="" class="img-fluid">
-                            </a>
-                            <!-- Post Title -->
-                            <div class="featured-post-title">
-                                <h6><a href="blog-details.html">Inspired To Move: Celebrating Dance and Black History Month</a></h6>
-                            </div>
-                        </div>
-                        <!-- End of Single Post -->
+                       @include('front.blog._right_featured')
                     </div>
                     <!-- End of Widget Content -->
                 </div>
                 <!-- End of Featured Posts -->
-
-                <!-- Select Category -->
-                <div class="widget widget-select-category">
-                    <!-- Widget Content -->
-                    <div class="widget-content">
-                        <!-- Select -->
-                        <select>
-                            <option selected>Choose category</option>
-                            <option value="1">Love</option>
-                            <option value="2">Fashion</option>
-                            <option value="3">Travel</option>
-                            <option value="4">Adventure</option>
-                            <option value="5">Sports</option>
-                            <option value="6">Food</option>
-                            <option value="7">Lifestyle</option>
-                            <option value="8">Technology</option>
-                        </select>
-                    </div>
-                    <!-- End of Widget Content -->
-                </div>
-                <!-- End of Select Category -->
-
-                <!-- Ad Widget -->
-                <div class="widget widget-ad">
-                    <!-- Widget Content -->
-                    <div class="widget-content">
-                        <a href="#">
-                            <img src="{{asset('theme-front/images/sidebar/ad.jpg')}}"> alt="" class="img-fluid">
-                        </a>
-                    </div>
-                    <!-- End of Widget Content -->
-                </div>
-                <!-- End of Ad Widget -->
-
-                <!-- Instagram Widget -->
-                <div class="widget widget-instagram">
-                    <!-- Widget Title -->
-                    <h4 class="widget-title">
-                        Instagram Post
-                    </h4>
-                    <!-- End of Widget Title -->
-
-                    <!-- Widget Content -->
-                    <div class="widget-content">
-                        <ul class="insta-gallery">
-                            <li>
-                                <!-- Instagram Post Image -->
-                                <a href="#"><img src="{{asset('theme-front/images/sidebar/instagram/1.jpg')}}"> alt="" class="img-fluid"></a>
-                            </li>
-                            <li>
-                                <!-- Instagram Post Image -->
-                                <a href="#"><img src="{{asset('theme-front/images/sidebar/instagram/2.jpg')}}"> alt="" class="img-fluid"></a>
-                            </li>
-                            <li>
-                                <!-- Instagram Post Image -->
-                                <a href="#"><img src="{{asset('theme-front/images/sidebar/instagram/3.jpg')}}"> alt="" class="img-fluid"></a>
-                            </li>
-                            <li>
-                                <!-- Instagram Post Image -->
-                                <a href="#"><img src="{{asset('theme-front/images/sidebar/instagram/4.jpg')}}"> alt="" class="img-fluid"></a>
-                            </li>
-                            <li>
-                                <!-- Instagram Post Image -->
-                                <a href="#"><img src="{{asset('theme-front/images/sidebar/instagram/5.jpg')}}"> alt="" class="img-fluid"></a>
-                            </li>
-                            <li>
-                                <!-- Instagram Post Image -->
-                                <a href="#"><img src="{{asset('theme-front/images/sidebar/instagram/6.jpg')}}"> alt="" class="img-fluid"></a>
-                            </li>
-                        </ul>
-                        <!-- Instagram Follow Button -->
-                        <a href="#" class="btn btn-block btn-instagram">
-                            <i class="fa fa-instagram"></i> Follow Me
-                        </a>
-                    </div>
-                    <!-- End of Widget Content -->
-                </div>
-                <!-- End of Instagram Widget -->
-
-                <!-- Newsletter Widget -->
-                <div class="widget widget-newsletter">
-                    <!-- Widget Title -->
-                    <h4 class="widget-title">
-                        Newsletter
-                    </h4>
-                    <!-- End of Widget Title -->
-
-                    <!-- Widget Content -->
-                    <div class="widget-content">
-                        <!-- Newsletter Text -->
-                        <p>Sign up and receive recent blog and article in your inbox every week.</p>
-                        <!-- Newsletter Form -->
-                        <div class="newsletter">
-                            <form action="https://themelooks.us13.list-manage.com/subscribe/post?u=79f0b132ec25ee223bb41835f&amp;id=f4e0e93d1d" method="post" novalidate>
-                                <input type="text" class="form-control" placeholder="Your Email">
-                                <button class="btn btn-block btn-default">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- End of Widget Content -->
-                </div>
-                <!-- End of Newsletter Widget -->
 
                 <!-- Recent Post Widget -->
                 <div class="widget widget-recent-post">
@@ -536,189 +242,13 @@
 
                     <!-- Widget Content -->
                     <div class="widget-content">
-                        <!-- Single Post -->
-                        <div class="wrp-cover">
-                            <!-- Post Thumbnail -->
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <img src="{{asset('theme-front/images/sidebar/rp-1.jpg')}}"> alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <!-- Post Title -->
-                            <div class="post-title">
-                                <a href="blog-details.html">Apple Admits To Macbook and Macbook Pro</a>
-                            </div>
-                        </div>
 
-                        <!-- Single Post -->
-                        <div class="wrp-cover">
-                            <!-- Post Thumbnail -->
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <img src="{{asset('theme-front/images/sidebar/rp-2.jpg')}}"> alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <!-- Post Title -->
-                            <div class="post-title">
-                                <a href="blog-details.html"> Feel The Love, And Things On My Mind </a>
-                            </div>
-                        </div>
+                            @include('front.blog._right_recent')
 
-                        <!-- Single Post -->
-                        <div class="wrp-cover">
-                            <!-- Post Thumbnail -->
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <img src="{{asset('theme-front/images/sidebar/rp-3.jpg')}}"> alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <!-- Post Title -->
-                            <div class="post-title">
-                                <a href="blog-details.html"> This Apple Crisp Makes The Entire House Smell Dreamy </a>
-                            </div>
-                        </div>
-
-                        <!-- Single Post -->
-                        <div class="wrp-cover">
-                            <!-- Post Thumbnail -->
-                            <div class="post-thumb">
-                                <a href="blog-details.html">
-                                    <img src="{{asset('theme-front/images/sidebar/rp-4.jpg')}}"> alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <!-- Post Title -->
-                            <div class="post-title">
-                                <a href="blog-details.html">20-Minute Thai Coconut Hot Chicken Soup</a>
-                            </div>
-                        </div>
                     </div>
                     <!-- End of Widget Content -->
                 </div>
                 <!-- End of Recent Post Widget -->
-
-                <!-- Most Commented Post Widget -->
-                <div class="widget widget-most-commented-post">
-                    <!-- Widget Title -->
-                    <h4 class="widget-title">
-                        Most Commented Post
-                    </h4>
-                    <!-- End of Widget Title -->
-
-                    <!-- Widget Content -->
-                    <div class="widget-content">
-                        <!-- Post Carousel -->
-                        <div class="wmcp-cover owl-carousel" data-owl-mouse-drag="true" data-owl-dots="true" data-owl-margin="20">
-                            <!-- Carousel Item -->
-                            <div class="wmcp-item">
-                                <!-- Single Post -->
-                                <div class="wmc-post">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('theme-front/images/sidebar/mcp-1.jpg')}}"> alt="" class="img-fluid">
-                                    </a>
-                                    <div class="wmc-post-title">
-                                        <h6> <a href="blog-details.html"> Understanding The Background Of Fashion </a></h6>
-                                    </div>
-                                </div>
-                                <!-- End of Single Post -->
-
-                                <!-- Single Post -->
-                                <div class="wmc-post">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('theme-front/images/sidebar/mcp-2.jpg')}}"> alt="" class="img-fluid">
-                                    </a>
-                                    <div class="wmc-post-title">
-                                        <h6> <a href="blog-details.html">12-inch MacBook Refurb $830, Apple Watch Series</a> </h6>
-                                    </div>
-                                </div>
-                                <!-- End of Single Post -->
-                            </div>
-                            <!-- End of Carousel Item -->
-
-                            <!-- Carousel Item -->
-                            <div class="wmcp-item">
-                                <!-- Single Post -->
-                                <div class="wmc-post">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('theme-front/images/sidebar/mcp-1.jpg')}}"> alt="" class="img-fluid">
-                                    </a>
-                                    <div class="wmc-post-title">
-                                        <h6> <a href="blog-details.html"> Understanding The Background Of Fashion </a></h6>
-                                    </div>
-                                </div>
-                                <!-- End of Single Post -->
-
-                                <!-- Single Post -->
-                                <div class="wmc-post">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('theme-front/images/sidebar/mcp-2.jpg')}}"> alt="" class="img-fluid">
-                                    </a>
-                                    <div class="wmc-post-title">
-                                        <h6> <a href="blog-details.html">12-inch MacBook Refurb $830, Apple Watch Series</a> </h6>
-                                    </div>
-                                </div>
-                                <!-- End of Single Post -->
-                            </div>
-                            <!-- End of Carousel Item -->
-
-                            <!-- Carousel Item -->
-                            <div class="wmcp-item">
-                                <!-- Single Post -->
-                                <div class="wmc-post">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('theme-front/images/sidebar/mcp-1.jpg')}}"> alt="" class="img-fluid">
-                                    </a>
-                                    <div class="wmc-post-title">
-                                        <h6> <a href="blog-details.html"> Understanding The Background Of Fashion </a></h6>
-                                    </div>
-                                </div>
-                                <!-- End of Single Post -->
-
-                                <!-- Single Post -->
-                                <div class="wmc-post">
-                                    <a href="blog-details.html">
-                                        <img src="{{asset('theme-front/images/sidebar/mcp-2.jpg')}}"> alt="" class="img-fluid">
-                                    </a>
-                                    <div class="wmc-post-title">
-                                        <h6> <a href="blog-details.html">12-inch MacBook Refurb $830, Apple Watch Series</a> </h6>
-                                    </div>
-                                </div>
-                                <!-- End of Single Post -->
-                            </div>
-                            <!-- End of Carousel Item -->
-                        </div>
-                        <!-- End of Post Carousel -->
-
-                    </div>
-                    <!-- End of Widget Content -->
-                </div>
-                <!-- End of Most Commented Post Widget -->
-
-                <!-- Tags Cloud Widget -->
-                <div class="widget widget-tag-cloud">
-                    <!-- Widget Title -->
-                    <h4 class="widget-title">
-                        Tags
-                    </h4>
-                    <!-- End of Widget Title -->
-
-                    <!-- Widget Content -->
-                    <div class="widget-content tagcloud">
-                        <a href="#">Fashion</a>
-                        <a href="#">Art</a>
-                        <a href="#">Lifestyle</a>
-                        <a href="#">Love</a>
-                        <a href="#">Travel</a>
-                        <a href="#">Health</a>
-                        <a href="#">Education</a>
-                        <a href="#">Movie</a>
-                        <a href="#">Games</a>
-                        <a href="#">Sports</a>
-                    </div>
-                    <!-- End of Widget Content -->
-                </div>
-                <!-- End of Tags Cloud Widget -->
-
-
             </div>
         </div>
     </div>

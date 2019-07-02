@@ -6,7 +6,7 @@
 <title>BizBlog</title>
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/png" href="{{asset('theme-front//images/favicon.png')}}">>
+<link rel="shortcut icon" type="image/png" href="{{asset('theme-front//images/favicon.png')}}">
 
 <!--==== Google Fonts ====-->
 <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500%7CSpectral:400,400i,500,600,700" rel="stylesheet">
